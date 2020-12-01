@@ -58,7 +58,10 @@
 
 
                 <StackPanel>
-                    <RadioButton x:Name="heroRadioButton" Content="Héroe" />
+                    <RadioButton
+                        x:Name="heroRadioButton"
+                        Content="Héroe"
+                        IsChecked="True" />
                     <RadioButton x:Name="villanoRadioButton" Content="Villano" />
                 </StackPanel>
             </Border>
