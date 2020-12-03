@@ -1,16 +1,17 @@
-﻿<Window x:Class="UTF4_EJER2.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:local="clr-namespace:UTF4_EJER2"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="HEROES SIN CONFINAR"
-        Width="800"
-        Height="450"
-        MinWidth="1000"
-        MinHeight="700"
-        Icon="shield.ico"
-        mc:Ignorable="d">
+﻿<Window
+    x:Class="UTF4_EJER2.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:UTF4_EJER2"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="HEROES SIN CONFINAR"
+    Width="800"
+    Height="450"
+    MinWidth="1000"
+    MinHeight="700"
+    Icon="shield.ico"
+    mc:Ignorable="d">
     <Window.Resources>
         <local:Superheroe x:Key="Super" />
         <local:Superheroe x:Key="Nuevo" />
@@ -19,7 +20,7 @@
     <Grid>
         <TabControl>
             <TabItem Header="Ver superhéroes">
-                <Grid x:Name="verGrid">
+                <Grid x:Name="verGrid" Background="{Binding Path=Heroe, Converter={StaticResource fondoConverter}}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*" />
                         <ColumnDefinition />
@@ -31,42 +32,47 @@
                         <RowDefinition />
 
                     </Grid.RowDefinitions>
-                    <TextBlock x:Name="NombreHeroe"
-                               FontSize="30"
-                               FontWeight="Bold"
-                               Foreground="White"
-                               Text="{Binding Path=Nombre}">
+                    <TextBlock
+                        x:Name="NombreHeroe"
+                        FontSize="30"
+                        FontWeight="Bold"
+                        Foreground="White"
+                        Text="{Binding Path=nombre}">
                         <TextBlock.Effect>
                             <DropShadowEffect />
                         </TextBlock.Effect>
                     </TextBlock>
-                    <DockPanel Grid.Column="1"
-                               LastChildFill="True">
-                        <Image Height="50"
-                               DockPanel.Dock="Right"
-                               Source="avengers.png"
-                               Visibility="{Binding Path=Vengador}" />
-                        <Image Height="50"
-                               DockPanel.Dock="Right"
-                               Source="xmen.png"
-                               Visibility="{Binding Path=Xmen}" />
+                    <DockPanel Grid.Column="1" LastChildFill="True">
+                        <Image
+                            Height="50"
+                            DockPanel.Dock="Right"
+                            Source="avengers.png"
+                            Visibility="{Binding Path=vengador, Converter={StaticResource visibilidadConverter}}" />
+                        <Image
+                            Height="50"
+                            DockPanel.Dock="Right"
+                            Source="xmen.png"
+                            Visibility="{Binding Path=xmen, Converter={StaticResource visibilidadConverter}}" />
                     </DockPanel>
 
-                    <Image Grid.Row="1"
-                           Grid.ColumnSpan="2"
-                           Margin="10"
-                           DockPanel.Dock="Bottom"
-                           Source="{Binding Path=Imagen}"
-                           Stretch="Fill" />
-                    <DockPanel Grid.Row="2"
-                               Width="200"
-                               LastChildFill="False">
-                        <Image x:Name="drflechaImage"
-                               Width="50"
-                               DockPanel.Dock="Right"
-                               PreviewMouseLeftButtonUp="drflechaImage_PreviewMouseLeftButtonUp"
-                               RenderTransformOrigin="0.5,0.5"
-                               Source="arrow.png">
+                    <Image
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        Margin="10"
+                        DockPanel.Dock="Bottom"
+                        Source="{Binding Path=imagen}"
+                        Stretch="Fill" />
+                    <DockPanel
+                        Grid.Row="2"
+                        Width="200"
+                        LastChildFill="False">
+                        <Image
+                            x:Name="drflechaImage"
+                            Width="50"
+                            DockPanel.Dock="Right"
+                            PreviewMouseLeftButtonUp="drflechaImage_PreviewMouseLeftButtonUp"
+                            RenderTransformOrigin="0.5,0.5"
+                            Source="arrow.png">
                             <Image.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform />
@@ -76,20 +82,22 @@
                                 </TransformGroup>
                             </Image.RenderTransform>
                         </Image>
-                        <TextBlock x:Name="TotalTextBlock"
-                                   Style="{StaticResource posicionTextblock}"
-                                   Text="5" />
-                        <TextBlock Style="{StaticResource posicionTextblock}"
-                                   Text="/" />
-                        <TextBlock x:Name="posicionTextBlock"
-                                   Style="{StaticResource posicionTextblock}"
-                                   Text="15" />
-                        <Image x:Name="izqflechaImage"
-                               Width="50"
-                               DockPanel.Dock="Right"
-                               MouseLeftButtonUp="izqflechaImage_MouseLeftButtonUp"
-                               Source="arrow.png"
-                               Visibility="Hidden" />
+                        <TextBlock
+                            x:Name="TotalTextBlock"
+                            Style="{StaticResource posicionTextblock}"
+                            Text="5" />
+                        <TextBlock Style="{StaticResource posicionTextblock}" Text="/" />
+                        <TextBlock
+                            x:Name="posicionTextBlock"
+                            Style="{StaticResource posicionTextblock}"
+                            Text="15" />
+                        <Image
+                            x:Name="izqflechaImage"
+                            Width="50"
+                            DockPanel.Dock="Right"
+                            MouseLeftButtonUp="izqflechaImage_MouseLeftButtonUp"
+                            Source="arrow.png"
+                            Visibility="Hidden" />
 
                     </DockPanel>
 
@@ -97,8 +105,7 @@
             </TabItem>
             <TabItem Header="Nuevo superheroe">
 
-                <Grid x:Name="CrearGrid"
-                      Background="#FFFBFBFB">
+                <Grid x:Name="CrearGrid" Background="#FFFBFBFB">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
@@ -122,99 +129,106 @@
                             <RowDefinition />
                             <RowDefinition />
                         </Grid.RowDefinitions>
-                        <DockPanel Grid.ColumnSpan="3"
-                                   Style="{StaticResource imageinfoDock}">
-                            <TextBlock Style="{StaticResource infotextbloc}"
-                                       Text="Nombre del superhéroe" />
-                            <Image Source="info.png"
-                                   Style="{StaticResource infoImage}" />
+                        <DockPanel Grid.ColumnSpan="3" Style="{StaticResource imageinfoDock}">
+                            <TextBlock Style="{StaticResource infotextbloc}" Text="Nombre del superhéroe" />
+                            <Image Source="info.png" Style="{StaticResource infoImage}" />
                         </DockPanel>
-                        <TextBox x:Name="nombreTextbox"
-                                 Grid.Row="1"
-                                 Grid.ColumnSpan="3"
-                                 Style="{StaticResource rellenarTexbox}"
-                                 Text="{Binding Path=Nombre}"
-                                 Margin="0,7,0,27" />
+                        <TextBox
+                            x:Name="nombreTextbox"
+                            Grid.Row="1"
+                            Grid.ColumnSpan="3"
+                            Margin="0,7,0,27"
+                            Style="{StaticResource rellenarTexbox}"
+                            Text="{Binding Path=nombre}" />
 
-                        <DockPanel Grid.Row="2"
-                                   Grid.ColumnSpan="3"
-                                   Style="{StaticResource imageinfoDock}">
-                            <TextBlock Style="{StaticResource infotextbloc}"
-                                       Text="Imagen" />
-                            <Image Source="info.png"
-                                   Style="{StaticResource infoImage}" />
+                        <DockPanel
+                            Grid.Row="2"
+                            Grid.ColumnSpan="3"
+                            Style="{StaticResource imageinfoDock}">
+                            <TextBlock Style="{StaticResource infotextbloc}" Text="Imagen" />
+                            <Image Source="info.png" Style="{StaticResource infoImage}" />
                         </DockPanel>
-                        <TextBox x:Name="imagenTextbox"
-                                 Text="{Binding Path= Imagen}"
-                                 Grid.Row="3"
-                                 Grid.ColumnSpan="3"
-                                 Style="{StaticResource rellenarTexbox}"
-                                 Margin="0,6,0,27" />
-                        <Border Grid.Row="4"
-                                Style="{StaticResource bordesborder}"
-                                Grid.ColumnSpan="2">
+                        <TextBox
+                            x:Name="imagenTextbox"
+                            Grid.Row="3"
+                            Grid.ColumnSpan="3"
+                            Margin="0,6,0,27"
+                            Style="{StaticResource rellenarTexbox}"
+                            Text="{Binding Path=imagen}" />
+                        <Border
+                            Grid.Row="4"
+                            Grid.ColumnSpan="2"
+                            Style="{StaticResource bordesborder}">
 
 
 
                             <StackPanel>
-                                <RadioButton 
-                                    IsChecked="{Binding Path=Heroe}"
+                                <RadioButton
                                     x:Name="heroRadioButton"
-                                             
-                                             Content="Héroe"
-                                              />
-                                <RadioButton IsChecked="{Binding Path=Villano}"
-                                             x:Name="villanoRadioButton"
-                                             Content="Villano" />
+                                    Content="Héroe"
+                                    IsChecked="{Binding Path=heroe}" />
+                                <RadioButton
+                                    x:Name="villanoRadioButton"
+                                    Checked="VengadoresCheckbox_Checked"
+                                    Content="Villano"
+                                    IsChecked="{Binding Path=villano}" />
                             </StackPanel>
                         </Border>
-                        <Border Grid.Row="4"
-                                Grid.Column="2"
-                                Style="{StaticResource bordesborder}">
+                        <Border
+                            Grid.Row="4"
+                            Grid.Column="2"
+                            Style="{StaticResource bordesborder}">
                             <StackPanel IsEnabled="{Binding ElementName=heroRadioButton, Path=IsChecked}">
-                                <CheckBox IsChecked="{Binding Path=Vengador}"
-                                          Checked="VengadoresCheckbox_Checked"
-                                          x:Name="VengadoresCheckbox"
-                                          Content="Vengadores" />
-                                <CheckBox IsChecked="{Binding Path=Xmen}"
-                                          x:Name="xmencheckbox"
-                                          Content="X-men" />
+                                <CheckBox
+                                    x:Name="VengadoresCheckbox"
+                                    Content="Vengadores"
+                                    IsChecked="{Binding Path=vengador}" />
+                                <CheckBox
+                                    x:Name="xmencheckbox"
+                                    Content="X-men"
+                                    IsChecked="{Binding Path=xmen}" />
                             </StackPanel>
                         </Border>
-                        <DockPanel Grid.Row="5"
-                                   LastChildFill="False"
-                                   Grid.ColumnSpan="2">
-                            <Button x:Name="acepButton"
-                                    Click="acepButton_Click"
-                                    DockPanel.Dock="Right"
-                                    Style="{StaticResource funcionesButton}">
+                        <DockPanel
+                            Grid.Row="5"
+                            Grid.ColumnSpan="2"
+                            LastChildFill="False">
+                            <Button
+                                x:Name="acepButton"
+                                Click="acepButton_Click"
+                                DockPanel.Dock="Right"
+                                Style="{StaticResource funcionesButton}">
                                 Aceptar
                             </Button>
                         </DockPanel>
-                        <DockPanel Grid.Row="5"
-                                   Grid.Column="2"
-                                   LastChildFill="False">
-                            <Button x:Name="limpButton"
-                                    Click="limpButton_Click"
-                                    Style="{StaticResource funcionesButton}">
+                        <DockPanel
+                            Grid.Row="5"
+                            Grid.Column="2"
+                            LastChildFill="False">
+                            <Button
+                                x:Name="limpButton"
+                                Click="limpButton_Click"
+                                Style="{StaticResource funcionesButton}">
                                 Limpiar
                             </Button>
                         </DockPanel>
                     </Grid>
 
-                    <Border Grid.RowSpan="2"
-                            Grid.Column="2"
-                            Margin="10"
-                            BorderBrush="Black"
-                            BorderThickness="3"
-                            CornerRadius="3">
+                    <Border
+                        Grid.RowSpan="2"
+                        Grid.Column="2"
+                        Margin="10"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        CornerRadius="3">
                         <StackPanel Background="#FFE8CE96" />
                     </Border>
-                    <Image Grid.RowSpan="2"
-                           Grid.Column="2"
-                           Margin="20"
-                           Stretch="Fill"
-                           Source="{Binding ElementName=imagenTextbox, Path=Text}"/>
+                    <Image
+                        Grid.RowSpan="2"
+                        Grid.Column="2"
+                        Margin="20"
+                        Source="{Binding ElementName=imagenTextbox, Path=Text}"
+                        Stretch="Fill" />
 
                 </Grid>
             </TabItem>

@@ -55,11 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="fondoConverter.cs" />
     <Compile Include="propfull.cs" />
     <Compile Include="Superheroe.cs" />
     <Compile Include="ventana_crear.xaml.cs">
       <DependentUpon>ventana_crear.xaml</DependentUpon>
     </Compile>
+    <Compile Include="visibilidadConverter.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
