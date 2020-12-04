@@ -82,6 +82,7 @@ namespace UTF4_EJER2
             superheroe = new Superheroe{ heroe=true};
             CrearGrid.DataContext = superheroe;
             int total = superheroes.Count;
+            drflechaImage.Visibility = Visibility.Visible;
             TotalTextBlock.Text = total.ToString();
 
 

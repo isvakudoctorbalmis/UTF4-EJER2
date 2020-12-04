@@ -9,7 +9,7 @@ namespace UTF4_EJER2
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {             
             
-            String color="";
+            string color="";
             if ((bool)value)
             {
                 color = "PaleGreen";

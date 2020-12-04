@@ -15,12 +15,14 @@
     <Window.Resources>
         <local:Superheroe x:Key="Super" />
         <local:Superheroe x:Key="Nuevo" />
+        <local:fondoConverter x:Key="fondo"></local:fondoConverter>
+        <local:visibilidadConverter x:Key="Visibilidad"></local:visibilidadConverter>
     </Window.Resources>
 
     <Grid>
         <TabControl>
             <TabItem Header="Ver superhéroes">
-                <Grid x:Name="verGrid" Background="{Binding Path=Heroe, Converter={StaticResource fondoConverter}}">
+                <Grid x:Name="verGrid" Background="{Binding Path=Heroe, Converter={StaticResource fondo}}">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="4*" />
                         <ColumnDefinition />
@@ -47,12 +49,12 @@
                             Height="50"
                             DockPanel.Dock="Right"
                             Source="avengers.png"
-                            Visibility="{Binding Path=vengador, Converter={StaticResource visibilidadConverter}}" />
+                            Visibility="{Binding Path=vengador, Converter={StaticResource Visibilidad}}" />
                         <Image
                             Height="50"
                             DockPanel.Dock="Right"
                             Source="xmen.png"
-                            Visibility="{Binding Path=xmen, Converter={StaticResource visibilidadConverter}}" />
+                            Visibility="{Binding Path=xmen, Converter={StaticResource Visibilidad}}" />
                     </DockPanel>
 
                     <Image

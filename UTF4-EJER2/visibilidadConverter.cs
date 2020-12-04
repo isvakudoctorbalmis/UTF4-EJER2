@@ -10,7 +10,8 @@ namespace UTF4_EJER2
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            String visibiladad = "";
+
+            string visibiladad = "";
             if ((bool)value)
             {
                 visibiladad = "Visible";
